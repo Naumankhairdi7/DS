@@ -1,0 +1,50 @@
+#include<stdio.h>
+#define pf printf
+#define sf scanf
+struct node
+{
+    int data;
+    struct node * next;
+};
+struct node *front,*end;
+void enqueue();
+void main()
+{
+    int ch;
+    front=end=NULL;
+    do
+    {
+        pf("\n%d1:enq\n%d2:deq\n%d3:display\n%d4:program ends\n%dchoice");
+        sf("%d",&ch);
+        switch (ch)
+        {
+            case 1:enqueue();break;
+            //e 2:dequeue();break;
+           //ase 3:display();break;
+            case 4:pf("program ends");break;
+            default:pf("wrong choice");break;
+        }
+
+    }while(ch!=4);
+}
+void enqueue()
+{
+    struct node *nn;
+    nn=(struct node*) malloc(sizeof(struct node));
+    pf("enter data");
+    sf("%d",&nn->data);
+    if(end==NULL)
+    {
+        front=nn;
+        end=nn;
+
+    }
+    else
+    {
+        end->next=nn;
+        end=nn;
+    }
+    pf("%d successfly enqueue",nn->data);
+
+
+}
